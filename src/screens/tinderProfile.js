@@ -86,7 +86,7 @@ const TinderProfile = () => {
                             height: 70,
                             borderRadius: 35
                         }]}>
-                            <Image style={styles.boostImg} source={require('../assets/settings.png')} />
+                            <Image style={styles.starImg} source={require('../assets/star.png')} />
                         </View>
                         <Text style={styles.settingText}>5 Super Likes</Text>
                     </TouchableOpacity>
@@ -101,7 +101,6 @@ const TinderProfile = () => {
                         <Text style={styles.settingText}>1 Boost</Text>
                     </TouchableOpacity>
                 </View>
-
             </ScrollView>
             <TouchableOpacity onPress = {()=> showSnackBar('Under Development!')} style={styles.myTinderGoldConatiner}>
                 <Text style={styles.goldText}>MY TINDER GOLD</Text>
@@ -243,6 +242,11 @@ const styles = StyleSheet.create({
         width: 35,
         height: 35,
         tintColor: 'rgb(171, 85, 128)'
+    },
+    starImg:{
+        width: 35,
+        height: 35,
+        tintColor: 'rgb(35, 186, 230)'
     },
     myTinderGoldConatiner: {
         width: '80%',
