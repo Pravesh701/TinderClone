@@ -6,35 +6,16 @@ import {
     SafeAreaView,
     Image,
     TouchableOpacity,
-    ScrollView
+    ScrollView,
+    Platform
 } from 'react-native';
-import Snackbar from 'react-native-snackbar';
-
-/**
- * show snackbr from bottom
- * 
- * @param title 
- * @param duration 
- */
-function showSnackBar(title, duration = Snackbar.LENGTH_LONG) {
-    Snackbar.show({
-        text: title || "OOPS! Something went wront. Please try again",
-        duration: duration,
-        backgroundColor: '#E1BEE7',
-        textColor: 'black',
-        fontWeight: 'bold',
-        action: {
-            text: 'Close',
-            onPress: () => Snackbar.dismiss(),
-            textColor: 'blue'
-        }
-    });
-}
 
 const TinderProfile = () => {
     return (
         <View style={styles.mainConatiner}>
-            <ScrollView style={styles.scrollViewStyle} contentContainerStyle={styles.constiner}>
+            <ScrollView 
+            style={styles.scrollViewStyle} 
+            contentContainerStyle={styles.constiner}>
                 <View style={styles.headerContainer1}>
                     <Image
                         source={require('../assets/profile.png')}
@@ -45,10 +26,11 @@ const TinderProfile = () => {
                         style={styles.tinderGrey}
                     />
                 </View>
-                <Image
-                    source={{ uri: 'http://pngimg.com/uploads/girls/girls_PNG6465.png' }}
-                    resizeMode={'contain'}
-                    style={styles.profilePic} />
+               <View  style={styles.profilePic}>
+               <Image
+                    source={{ uri: 'https://reactnativecode.com/wp-content/uploads/2017/10/Butterfly.png' }}
+                    resizeMode={'contain'} />
+               </View>
                 <Text style={styles.titileText}>
                     Rose, 26
             </Text>
@@ -56,13 +38,13 @@ const TinderProfile = () => {
                     Product Manager
             </Text>
                 <View style={styles.mediaContainer}>
-                    <TouchableOpacity onPress = {()=> showSnackBar('Under Development!')} style={styles.settingMainContainer}>
+                    <TouchableOpacity activeOpacity = {0.8} style={styles.settingMainContainer}>
                         <View style={styles.settingContainer}>
                             <Image style={styles.settingImg} source={require('../assets/settings.png')} />
                         </View>
                         <Text style={styles.settingText}>SETTINGS</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress = {()=> showSnackBar('Under Development!')} style={styles.cameraMainConatiner}>
+                    <TouchableOpacity activeOpacity = {0.8}  style={styles.cameraMainConatiner}>
                         <View style={styles.cameraConatiner}>
                             <Image style={styles.cameraImg} source={require('../assets/camera.png')} />
                             <View style={styles.plusContainer}>
@@ -70,9 +52,8 @@ const TinderProfile = () => {
                             </View>
                         </View>
                         <Text style={styles.settingText}>ADD PHOTOS</Text>
-
                     </TouchableOpacity>
-                    <TouchableOpacity onPress = {()=> showSnackBar('Under Development!')} style={styles.settingMainContainer}>
+                    <TouchableOpacity activeOpacity = {0.8}  style={styles.settingMainContainer}>
                         <View style={styles.settingContainer}>
                             <Image style={styles.settingImg} source={require('../assets/write.png')} />
                         </View>
@@ -80,7 +61,7 @@ const TinderProfile = () => {
                     </TouchableOpacity>
                 </View>
                 <View style={[styles.mediaContainer, { marginTop: 60, justifyContent: 'space-around' }]}>
-                    <TouchableOpacity onPress = {()=> showSnackBar('Under Development!')} style={styles.settingMainContainer}>
+                    <TouchableOpacity  activeOpacity = {0.8} style={styles.settingMainContainer}>
                         <View style={[styles.settingContainer, {
                             width: 70,
                             height: 70,
@@ -90,7 +71,7 @@ const TinderProfile = () => {
                         </View>
                         <Text style={styles.settingText}>5 Super Likes</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress = {()=> showSnackBar('Under Development!')} style={styles.settingMainContainer}>
+                    <TouchableOpacity activeOpacity = {0.8} style={styles.settingMainContainer}>
                         <View style={[styles.settingContainer, {
                             width: 70,
                             height: 70,
@@ -102,7 +83,7 @@ const TinderProfile = () => {
                     </TouchableOpacity>
                 </View>
             </ScrollView>
-            <TouchableOpacity onPress = {()=> showSnackBar('Under Development!')} style={styles.myTinderGoldConatiner}>
+            <TouchableOpacity  activeOpacity = {0.8} style={styles.myTinderGoldConatiner}>
                 <Text style={styles.goldText}>MY TINDER GOLD</Text>
             </TouchableOpacity>
         </View>
@@ -116,6 +97,7 @@ const styles = StyleSheet.create({
     constiner: {
         flexGrow: 1,
         alignItems: 'center',
+        paddingBottom: 150
     },
     headerContainer: {
         flexDirection: 'row',
@@ -271,7 +253,7 @@ const styles = StyleSheet.create({
     },
     scrollViewStyle: {
         flex: 1,
-        marginTop: 54
+        marginTop: Platform.OS == 'ios' ? 54:30
     }
 })
 
